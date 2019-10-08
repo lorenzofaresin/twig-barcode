@@ -8,8 +8,6 @@
       "email": "d.hoeck@alpin11.at"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "TwigBarcode\\": "src/"
