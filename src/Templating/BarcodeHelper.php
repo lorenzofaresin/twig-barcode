@@ -22,8 +22,10 @@ class BarcodeHelper extends Helper
      * @param $type
      * @param int $widthFactor
      * @param int $totalHeight
+     *
+     * @return
      */
-    public function getBarcode($code, $type, $widthFactor = 2, $totalHeight = 30)
+    public function getBarcode($type, $code, $widthFactor = 2, $totalHeight = 30)
     {
         return $this->generator->getBarcode($code, $type, $widthFactor, $totalHeight);
     }

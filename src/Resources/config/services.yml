@@ -34,6 +34,7 @@ services:
             - '@barcode.templating.helper.svg'
             - '@barcode.templating.helper.png'
             - '@barcode.templating.helper.jpg'
+            - ['svg', 'html', 'jpg', 'png']
         tags:
             - { name: twig.extension }
 

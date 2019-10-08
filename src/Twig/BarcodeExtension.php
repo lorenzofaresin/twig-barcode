@@ -2,6 +2,8 @@
 
 namespace TwigBarcode\Twig;
 
+use Picqer\Barcode\BarcodeGenerator;
+use ReflectionClass;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -10,49 +12,70 @@ use TwigBarcode\Templating\BarcodeHelper;
 class BarcodeExtension extends AbstractExtension
 {
     /**
-     * @var BarcodeHelper
+     * @var BarcodeHelper[]
      */
-    private $htmlBarcodeHelper;
+    private $barCodeHelpers = [];
+
     /**
-     * @var BarcodeHelper
+     * @var array
      */
-    private $svgBarcodeHelper;
-    /**
-     * @var BarcodeHelper
-     */
-    private $pngBarcodeHelper;
-    /**
-     * @var BarcodeHelper
-     */
-    private $jpgBarcodeHelper;
+    private $formats;
 
     public function __construct(
         BarcodeHelper $htmlBarcodeHelper,
         BarcodeHelper $svgBarcodeHelper,
         BarcodeHelper $pngBarcodeHelper,
-        BarcodeHelper $jpgBarcodeHelper
-    ) {
-        $this->htmlBarcodeHelper = $htmlBarcodeHelper;
-        $this->svgBarcodeHelper = $svgBarcodeHelper;
-        $this->pngBarcodeHelper = $pngBarcodeHelper;
-        $this->jpgBarcodeHelper = $jpgBarcodeHelper;
+        BarcodeHelper $jpgBarcodeHelper,
+        array $formats
+    )
+    {
+        $this->barCodeHelpers['html'] = $htmlBarcodeHelper;
+        $this->barCodeHelpers['svg'] = $svgBarcodeHelper;
+        $this->barCodeHelpers['png'] = $pngBarcodeHelper;
+        $this->barCodeHelpers['jpg'] = $jpgBarcodeHelper;
+        $this->formats = $formats;
     }
 
     public function getFilters()
     {
         return [
-            new TwigFilter('base64_encode', [$this, 'base64Encode']),
+            new TwigFilter('base64_encode', [$this, 'base64Encode'])
         ];
     }
 
     public function getFunctions()
     {
-        return [
-            new TwigFunction('barcode_html', [$this->htmlBarcodeHelper, 'getBarcode']),
-            new TwigFunction('barcode_svg', [$this->svgBarcodeHelper, 'getBarcode']),
-            new TwigFunction('barcode_png', [$this->pngBarcodeHelper, 'getBarcode']),
-            new TwigFunction('barcode_jpg', [$this->jpgBarcodeHelper, 'getBarcode']),
-        ];
+        $functions = [];
+
+        $reflectionClass = new ReflectionClass(BarcodeGenerator::class);
+        $types = $reflectionClass->getConstants();
+
+
+        foreach ($this->formats as $format) {
+
+            if (!array_key_exists($format, $this->barCodeHelpers)) {
+                continue;
+            }
+
+            foreach ($types as $type) {
+
+                $name = sprintf('barcode_%s_*', $format);
+                $name = str_replace('+', '_plus', $name);
+
+                $functions[] = new TwigFunction(
+                    $name,
+                    [
+                        $this->barCodeHelpers[$format],
+                        'getBarcode'
+                    ],
+                    [
+                        'is_safe' => ['html']
+                    ]
+                );
+            }
+        }
+
+        return $functions;
     }
 
     public function base64Encode($data)

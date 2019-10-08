@@ -1,6 +1,6 @@
 {
   "name": "alpin11/twig-barcode",
-  "description": "Symfony Bundle to generate barcodes with Twig",
+  "description": "Symfony Bundle to generate barcodes within Twig",
   "type": "library",
   "authors": [
     {
