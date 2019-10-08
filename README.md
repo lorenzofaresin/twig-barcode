@@ -3,19 +3,19 @@ Generate barcodes within twig
 
 ## Installation 
 
-Install with Composer
+Install through [composer](https://getcomposer.org/doc/00-intro.md):
 
-```
+```shell script
 composer require alpin11/twig-barcode
 ```
 
-After installation add it to your bundles
+If you want to generate PNG or JPG images, you need the GD library or Imagick installed on your system as well.
 
 ### Usage 
 
 Simply use it like any other Twig function: 
 
-```
+```twig
 barcode_html_ean13(theBarcodeValue, widthFactor = 2, totalHeight = 30)
 ```
 
@@ -33,19 +33,19 @@ With that option you can set the height of the generated barcode. The default is
 ### Supported Formats 
 
 #### HTML
-```
+```twig
 barcode_html_*
 ```
 #### SVG
-```
+```twig
 barcode_svg_*
 ```
 #### PNG
-```
+```twig
 barcode_png_*
 ```
 #### JPG
-```
+```twig
 barcode_jpg_*
 ```
 
