@@ -1,0 +1,15 @@
+{% macro generate_html(barcode) %}
+    {{ barcode_html(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_EAN_2'))|raw }}
+{% endmacro %}
+
+{% macro generate_png(barcode) %}
+    {{ barcode_png(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_EAN_2'))|raw }}
+{% endmacro %}
+
+{% macro generate_svg(barcode) %}
+    {{ barcode_svg(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_EAN_2'))|raw }}
+{% endmacro %}
+
+{% macro generate_jpg(barcode) %}
+    {{ barcode_jpg(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_EAN_2'))|raw }}
+{% endmacro %}

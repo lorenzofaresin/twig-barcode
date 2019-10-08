@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        public: true
+
+    barcode.generator.html:
+        class: Picqer\Barcode\BarcodeGeneratorHTML
+
+    barcode.generator.png:
+        class: Picqer\Barcode\BarcodeGeneratorPNG
+
+    barcode.generator.jpg:
+        class: Picqer\Barcode\BarcodeGeneratorJPG
+
+    barcode.generator.svg:
+        class: Picqer\Barcode\BarcodeGeneratorSVG

@@ -1,0 +1,23 @@
+{
+  "name": "alpin11/twig-barcode",
+  "description": "Symfony Bundle to generate barcodes with Twig",
+  "type": "library",
+  "authors": [
+    {
+      "name": "David Höck",
+      "email": "d.hoeck@alpin11.at"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "TwigBarcode\\": "src/"
+    }
+  },
+  "require": {
+    "twig/twig": "^2.4",
+    "symfony/symfony": "^3.4 || ^4.0",
+    "picqer/php-barcode-generator": "^0.3.0"
+  }
+}

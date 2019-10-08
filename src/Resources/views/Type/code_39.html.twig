@@ -1,0 +1,15 @@
+{% macro generate_html(barcode) %}
+    {{ barcode_html(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_CODE_39'))|raw }}
+{% endmacro %}
+
+{% macro generate_png(barcode) %}
+    {{ barcode_html(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_CODE_39'))|raw }}
+{% endmacro %}
+
+{% macro generate_svg(barcode) %}
+    {{ barcode_html(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_CODE_39'))|raw }}
+{% endmacro %}
+
+{% macro generate_jpg(barcode) %}
+    {{ barcode_html(barcode, constant('\\Picqer\\Barcode\\BarcodeGenerator::TYPE_CODE_39'))|raw }}
+{% endmacro %}

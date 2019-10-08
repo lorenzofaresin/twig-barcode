@@ -1,0 +1,39 @@
+imports:
+    - { resource: services/generator.yml }
+
+services:
+
+    barcode.templating.helper.html:
+        class: TwigBarcode\Templating\BarcodeHelper
+        arguments:
+            - '@barcode.generator.html'
+
+
+    barcode.templating.helper.png:
+        class: TwigBarcode\Templating\BarcodeHelper
+        arguments:
+            - '@barcode.generator.png'
+
+
+    barcode.templating.helper.jpg:
+        class: TwigBarcode\Templating\BarcodeHelper
+        arguments:
+            - '@barcode.generator.jpg'
+
+
+    barcode.templating.helper.svg:
+        class: TwigBarcode\Templating\BarcodeHelper
+        arguments:
+            - '@barcode.generator.svg'
+
+
+    barcode.twig.extension:
+        class: TwigBarcode\Twig\BarcodeExtension
+        arguments:
+            - '@barcode.templating.helper.html'
+            - '@barcode.templating.helper.svg'
+            - '@barcode.templating.helper.png'
+            - '@barcode.templating.helper.jpg'
+        tags:
+            - { name: twig.extension }
+
