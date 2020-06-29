@@ -5,7 +5,9 @@
   "authors": [
     {
       "name": "David Höck",
-      "email": "d.hoeck@alpin11.at"
+      "email": "d.hoeck@alpin11.at",
+      "homepage": "https://www.alpin11.at",
+      "role": "developer"
     }
   ],
   "autoload": {
@@ -16,6 +18,6 @@
   "require": {
     "twig/twig": "^2.4",
     "symfony/symfony": "^3.4 || ^4.0",
-    "picqer/php-barcode-generator": "^0.3.0"
+    "picqer/php-barcode-generator": "^2.1"
   }
 }
