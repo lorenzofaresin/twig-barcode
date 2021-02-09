@@ -2,6 +2,7 @@
   "name": "lorenzofaresin/twig-barcode",
   "description": "Symfony Bundle to generate barcodes within Twig",
   "type": "library",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "David Höck",
