@@ -17,8 +17,8 @@
     }
   },
   "require": {
-    "twig/twig": "^2.4",
-    "symfony/symfony": "^3.4 || ^4.0 || ^5.0",
+    "twig/twig": "*",
+    "symfony/symfony": "*",
     "picqer/php-barcode-generator": "^2.0"
   }
 }
